@@ -33,37 +33,37 @@ if not st.session_state.authenticated:
             st.error("Access code is incorrect.")
 else:
 
-    # Replicate Credentials
-    with st.sidebar:
-        st.title('AI행정원 @NST')
+    # # Replicate Credentials
+    # with st.sidebar:
+    #     st.title('AI행정원 @NST')
 
-        if 'openai' in st.secrets:
-            st.success('API key already provided!', icon='✅')
-            openai_api = st.secrets["api"]["openai"]
-        else:
-            openai_api = st.text_input("Enter OpenAI API Key", type="password")
-            if openai_api:
-                st.success('API key provided!', icon='✅')
+    #     if 'openai' in st.secrets:
+    #         st.success('API key already provided!', icon='✅')
+    #         openai_api = st.secrets["api"]["openai"]
+    #     else:
+    #         openai_api = st.text_input("Enter OpenAI API Key", type="password")
+    #         if openai_api:
+    #             st.success('API key provided!', icon='✅')
 
-    # Store LLM generated responses
-    if "messages" not in st.session_state.keys():
-        st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+    # # Store LLM generated responses
+    # if "messages" not in st.session_state.keys():
+    #     st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
 
-    # Display or clear chat messages
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.write(message["content"])
+    # # Display or clear chat messages
+    # for message in st.session_state.messages:
+    #     with st.chat_message(message["role"]):
+    #         st.write(message["content"])
 
-    def clear_chat_history():
-        st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
-    st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
+    # def clear_chat_history():
+    #     st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+    # st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
 
-    # User-provided prompt
-    if prompt := st.chat_input(disabled=not openai_api):  # `replicate_api` 대신 `openai_api` 사용
-        st.session_state.messages.append({"role": "user", "content": prompt})  # 역할 이름을 "user"로 변경
-        with st.chat_message("user"):  # 역할 이름에 맞게 "user"로 수정
-            st.write(prompt)
+    # # User-provided prompt
+    # if prompt := st.chat_input(disabled=not openai_api):  # `replicate_api` 대신 `openai_api` 사용
+    #     st.session_state.messages.append({"role": "user", "content": prompt})  # 역할 이름을 "user"로 변경
+    #     with st.chat_message("user"):  # 역할 이름에 맞게 "user"로 수정
+    #         st.write(prompt)
 
 
 # # Function for generating LLaMA2 response
