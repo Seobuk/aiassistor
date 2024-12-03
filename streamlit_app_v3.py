@@ -15,6 +15,7 @@ from streamlit_authenticator.utilities import (CredentialsError,
 logo = "./asset/logo.png"
 
 st.logo(logo,size="large")
+st.image(logo)
 st.title("2024연구행정혁신 - AI행정원 Demo")
 
 # 초기화
