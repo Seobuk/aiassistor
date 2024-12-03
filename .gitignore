@@ -1,0 +1,14 @@
+# Ignore all files in the .streamlit directory
+.streamlit/*
+
+# Allow specific configuration files if necessary
+!.streamlit/config.toml
+!.streamlit/secrets.toml.example
+
+# Ignore secrets file
+.streamlit/secrets.toml
+
+# Ignore other temporary or sensitive files
+.streamlit/*.log
+.streamlit/*.bak
+.streamlit/*.tmp

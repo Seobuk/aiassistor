@@ -12,18 +12,17 @@ from streamlit_authenticator.utilities import (CredentialsError,
                                                ResetError,
                                                UpdateError)
 
-# App title
-st.set_page_config(page_title="AIassistor@NST")
+klogo = "./asset/logo.png"
+sidebar_logo = klogo
 
 
 # 초기화
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = True
 
-
-    # 인증 페이지
+# 인증 페이지
 if not st.session_state.authenticated:
-    st.title("AI행정원 모집")
+    st.title("산업부-AI스마트드라이버")
     password_input = st.text_input("Please enter the access code:", type="password")
     if st.button("Enter"):
         if password_input == st.secrets["auth"]["password"]:
@@ -61,9 +60,9 @@ else:
 
 
     # User-provided prompt
-    if prompt := st.chat_input(disabled=not replicate_api):
-        st.session_state.messages.append({"role": "R", "content": prompt})
-        with st.chat_message("R"):
+    if prompt := st.chat_input(disabled=not openai_api):  # `replicate_api` 대신 `openai_api` 사용
+        st.session_state.messages.append({"role": "user", "content": prompt})  # 역할 이름을 "user"로 변경
+        with st.chat_message("user"):  # 역할 이름에 맞게 "user"로 수정
             st.write(prompt)
 
 
