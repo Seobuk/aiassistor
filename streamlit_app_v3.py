@@ -37,9 +37,9 @@ else:
     with st.sidebar:
         st.title('AI행정원 @NST')
 
-        if 'openai' in st.secrets:
+        if 'openai_api' in st.secrets:
             st.success('API key already provided!', icon='✅')
-            openai_api = st.secrets["api"]["openai"]
+            openai_api = st.secrets["api"]["openai_api"]
         else:
             openai_api = st.text_input("Enter OpenAI API Key", type="password")
             if openai_api:
