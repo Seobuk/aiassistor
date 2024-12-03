@@ -24,7 +24,8 @@ st.logo(logo,size="large")
 col1, col2 = st.columns([2, 1])  # 비율 설정 (2:1)
 
 with col1:
-    st.title("2024 연구행정혁신 - AI행정원 Demo")
+    st.title("2024 연구행정혁신 ")
+    st.title("AI 행정원 (에디)")
 
 with col2:
     st.image(에디)
