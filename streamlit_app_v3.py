@@ -17,9 +17,25 @@ sidebar_logo = klogo
 
 st.title("산업부-AI스마트드라이버")
 
-# # 초기화
-# if "authenticated" not in st.session_state:
-#     st.session_state.authenticated = True
+# 초기화
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+# 인증 페이지
+if not st.session_state.authenticated:
+    password_input = st.text_input("Please enter the access code:", type="password")
+    if st.button("Enter"):
+        if password_input == st.secrets["auth"]["password"]:
+            st.session_state.authenticated = True
+            # 페이지를 다시 로드하지 않고, 현재 상태에서 컨텐츠가 업데이트되도록 설정
+            st.rerun()
+    else:
+        st.error("Access code is incorrect.")
+
+else:
+    st.title("test")
+
+
 
 # # 인증 페이지
 # if not st.session_state.authenticated:
