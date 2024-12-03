@@ -37,13 +37,13 @@ else:
     with st.sidebar:
         st.title('AI행정원 @NST')
 
-        if "api" in st.secrets and "openai_api" in st.secrets["api"]:
-            st.success('API key already provided!', icon='✅')
-            openai_api = st.secrets["api"]["openai_api"]
-        else:
-            openai_api = st.text_input("Enter OpenAI API Key", type="password")
-            if openai_api:
-                st.success('API key provided!', icon='✅')
+        # if "api" in st.secrets and "openai_api" in st.secrets["api"]:
+        #     st.success('API key already provided!', icon='✅')
+        #     openai_api = st.secrets["api"]["openai_api"]
+        # else:
+        #     openai_api = st.text_input("Enter OpenAI API Key", type="password")
+        #     if openai_api:
+        #         st.success('API key provided!', icon='✅')
 
     # Store LLM generated responses
     if "messages" not in st.session_state.keys():
@@ -54,9 +54,9 @@ else:
         with st.chat_message(message["role"]):
             st.write(message["content"])
 
-    def clear_chat_history():
-        st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
-    st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
+    # def clear_chat_history():
+    #     st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+    # st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
     uploaded_file = st.sidebar.file_uploader(
         label="연구계획서를 올려주세요",
