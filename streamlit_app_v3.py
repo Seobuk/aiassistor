@@ -27,8 +27,8 @@ with col1:
     st.title("2024 연구행정혁신 - AI행정원 Demo")
 
 with col2:
-    st.image("에디 이미지 경로", caption="에디 AI")
-    
+    st.image(에디)
+
 # 초기화
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
