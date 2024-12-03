@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import os
-import openai
+# import openai
 
 import streamlit_authenticator as stauth
 from streamlit_authenticator.utilities import (CredentialsError,
