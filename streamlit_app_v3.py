@@ -13,11 +13,12 @@ from streamlit_authenticator.utilities import (CredentialsError,
                                                UpdateError)
 
 logo = "./asset/logo.png"
+에디 = "./asset/ed.png"
 
 st.logo(logo,size="large")
-st.image(logo)
-st.title("2024연구행정혁신 - AI행정원 Demo")
 
+st.title("2024연구행정혁신 - AI행정원 Demo")
+st.image(에디)
 # 초기화
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
