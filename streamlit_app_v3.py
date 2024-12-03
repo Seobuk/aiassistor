@@ -29,8 +29,8 @@ if not st.session_state.authenticated:
             st.session_state.authenticated = True
             # 페이지를 다시 로드하지 않고, 현재 상태에서 컨텐츠가 업데이트되도록 설정
             st.rerun()
-    else:
-        st.error("Access code is incorrect.")
+        else:
+            st.error("Access code is incorrect.")
 
 else:
     st.title("test")
