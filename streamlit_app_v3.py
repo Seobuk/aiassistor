@@ -17,8 +17,8 @@ logo = "./asset/logo.png"
 
 st.logo(logo,size="large")
 
-# 레이아웃 설정
-st.set_page_config(layout="wide")
+# # 레이아웃 설정
+# st.set_page_config(layout="wide")
 
 # 칼럼 생성
 col1, col2 = st.columns([2, 1])  # 비율 설정 (2:1)
@@ -28,6 +28,7 @@ with col1:
 
 with col2:
     st.image("에디 이미지 경로", caption="에디 AI")
+    
 # 초기화
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
