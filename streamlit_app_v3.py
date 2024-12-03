@@ -35,6 +35,7 @@ if not st.session_state.authenticated:
 else:
     # Replicate Credentials
     with st.sidebar:
+        st.logo(logo, icon_image=logo,size="large")
         st.title('AI행정원 @NST')
 
         if "api" in st.secrets and "openai_api" in st.secrets["api"]:
