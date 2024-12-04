@@ -18,7 +18,7 @@ logo = "./asset/logo.png"
 st.logo(logo,size="large")
 
 # # 레이아웃 설정
-st.set_page_config(layout="wide")
+# st.set_page_config(layout="wide")
 
 # 칼럼 생성
 col1, col2 = st.columns([2, 1])  # 비율 설정 (2:1)
@@ -36,7 +36,7 @@ if "authenticated" not in st.session_state:
 
 # 인증 페이지
 if not st.session_state.authenticated:
-    password_input = st.text_input("Please enter the access code:", type="password")
+    password_input = st.text_input("Please enter the access code:", type="default")
     if st.button("Enter"):
         if password_input == st.secrets["auth"]["password"]:
             st.session_state.authenticated = True
