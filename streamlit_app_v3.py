@@ -134,9 +134,8 @@ else:
             st.write(prompt)
 
         # GPT 응답 생성
-        response_content = ""
-        st.session_state.messages.append({"role": "assistant", "content": response_content})
         with st.chat_message("assistant"):
             placeholder = st.empty()
             response_content = asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
+            st.session_state.messages.append({"role": "assistant", "content": response_content})
             
