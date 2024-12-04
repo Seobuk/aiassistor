@@ -20,15 +20,7 @@ st.logo(logo,size="large")
 # # 레이아웃 설정
 # st.set_page_config(layout="wide")
 
-# 칼럼 생성
-col1, col2 = st.columns([2, 1])  # 비율 설정 (2:1)
 
-with col1:
-    st.title("2024 연구행정혁신 ")
-    st.title("AI 행정원 (에디)")
-
-with col2:
-    st.image(에디)
 
 # 초기화
 if "authenticated" not in st.session_state:
@@ -36,6 +28,15 @@ if "authenticated" not in st.session_state:
 
 # 인증 페이지
 if not st.session_state.authenticated:
+
+    col1, col2 = st.columns([2, 1])  # 비율 설정 (2:1)
+
+    with col1:
+        st.title("2024 연구행정혁신 ")
+        st.title("AI 행정원 (에디)")
+
+    with col2:
+        st.image(에디)
     password_input = st.text_input("Please enter the access code:", type="default")
     if st.button("Enter"):
         if password_input == st.secrets["auth"]["password"]:
@@ -46,7 +47,7 @@ if not st.session_state.authenticated:
             st.error("Access code is incorrect.")
 
 else:
-    # Replicate Credentials
+    st.set_page_config(layout="wide")
     with st.sidebar:
         st.logo(logo,size="large")
         st.title('AI행정원 @NST')
