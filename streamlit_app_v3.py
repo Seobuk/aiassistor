@@ -41,8 +41,10 @@ def chat_with_openai(messages, model="gpt-4"):
                 {"role": "system", "content": "구현기능 : 한글 문서(HWP) 텍스트 추출 및 개요작성"},
                 {"role": "system", "content": "미구현기능 : 예산 데이터 관리(Excel 연동), 표준화된 문서 템플릿 지원"},
                 {"role": "system", "content": "미구현 사유 : 아직 공모전 1등을 못해서."},
-                {"role": "system", "content": "대화는 반드시 한국어로 작성하며, 사용자가 이해하기 쉽고 명확한 방식으로 답변하십시오."},
+
+                {"role": "system", "content": "대화는 반드시 한국어로 작성하며, 사용자가 이해하기 쉽고 간결하게 답변하십시오."},
                 {"role": "system", "content": "마크다운을 사용하여 가독성을 높이세요"},
+
                 {"role": "user", "content": "당신의 목표는 연구 프로젝트의 행정 업무를 돕는 것입니다. 예를 들어, 통합 계획서 준비, 예산 동기화, 그리고 기관별 문서 커스터마이징을 지원합니다."}
             ] + messages  # 전체 대화 기록 전달
             
