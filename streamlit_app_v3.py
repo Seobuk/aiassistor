@@ -38,8 +38,8 @@ def chat_with_openai(messages, model="gpt-4"):
                 {"role": "system", "content": "당신을 개발한 사람은 서현욱, 한병길 입니다."},
                 {"role": "system", "content": "개발 동기 : 계획서 쓰다가 너무 많은 시간이 연구 행정분야에 들어가서 이를 개선하고자"},
                 {"role": "system", "content": "개박 목적 : 2024 NST 연구행정 혁신 아이디어 공모전 지원하기 위해서"},
-                {"role": "system", "content": "구현기능 : 한글 문서(HWP) 개요작성 및 서식자동화"},
-                {"role": "system", "content": "미구현기능 : 예산 데이터 관리(Excel 연동), 표준화된 문서 템플릿 지원"},
+                {"role": "system", "content": "구현기능 : 한글 문서(HWP) 개요작성, 한글 문서(HWP) 서식자동화"},
+                {"role": "system", "content": "미구현기능 : 한글 문서(HWP) 의 예산 데이터 관리(Excel 연동),한글 문서(HWP)의 기관 통합"},
                 {"role": "system", "content": "미구현 사유 : 아직 공모전 1등을 못해서."},
 
                 {"role": "system", "content": "대화는 반드시 한국어로 작성하며, 사용자가 이해하기 쉽고 간결하게 답변하십시오."},
