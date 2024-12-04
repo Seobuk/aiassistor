@@ -131,6 +131,6 @@ else:
             # OpenAI API 요청 및 응답
         response = chat_with_openai(st.session_state.messages)
         if response:
-            st.session_state.messages.append({"role": "system", "content": response.content})
-            with st.chat_message("system"):
+            st.session_state.messages.append({"role": "assistant", "content": response.content})
+            with st.chat_message("assistant"):
                 st.write(response.content)
