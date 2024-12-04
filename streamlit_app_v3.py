@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 from openai import OpenAI
-client = OpenAI()
+# client = OpenAI()
 
 import streamlit_authenticator as stauth
 from streamlit_authenticator.utilities import (CredentialsError,
@@ -28,8 +28,8 @@ if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
 
-# API 키 설정
-client.api_key = st.secrets["api"]["openai_api"]
+# # API 키 설정
+# client.api_key = st.secrets["api"]["openai_api"]
 
 
 # 인증 페이지
