@@ -28,8 +28,9 @@ if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
 
+
 # # API 키 설정
-# client.api_key = st.secrets["api"]["openai_api"]
+# Set OpenAI API key from Streamlit secrets
 
 
 # 인증 페이지
@@ -67,6 +68,12 @@ else:
                 st.success('API key provided!', icon='✅')
 
     # Store LLM generated responses
+
+    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+    if "openai_model" not in st.session_state:
+        st.session_state["openai_model"] = "gpt-4o-mini"
+
+
     if "messages" not in st.session_state.keys():
         st.session_state.messages     = [{"role": "assistant", "content": "안녕하세요 저는 AI행정원'에디'입니다."}]
         st.session_state.messages.append({"role": "assistant", "content": "만나서 반갑습니다."})  # 역할 이름을 "user"로 변경
@@ -107,18 +114,31 @@ else:
             st.write(prompt)
 
 
-    completion = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {
-                "role": "user",
-                "content": st.session_state.messages
-            }
-        ]
-    )
-    st.write(completion.choices[0].message)
-    # print(completion.choices[0].message)
+ # Display assistant response in chat message container
+    with st.chat_message("assistant"):
+        stream = client.chat.completions.create(
+            model=st.session_state["openai_model"],
+            messages=[
+                {"role": m["role"], "content": m["content"]}
+                for m in st.session_state.messages
+            ],
+            stream=True,
+        )
+        response = st.write_stream(stream)
+    st.session_state.messages.append({"role": "assistant", "content": response})
+
+    # completion = client.chat.completions.create(
+    #     model="gpt-4o-mini",
+    #     messages=[
+    #         {"role": "system", "content": "You are a helpful assistant."},
+    #         {
+    #             "role": "user",
+    #             "content": st.session_state.messages
+    #         }
+    #     ]
+    # )
+    # st.write(completion.choices[0].message)
+    # # print(completion.choices[0].message)
 
 
 
