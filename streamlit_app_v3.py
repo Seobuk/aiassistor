@@ -79,7 +79,7 @@ else:
 
         if "api" in st.secrets and "OPENAI_API_KEY " in st.secrets["api"]:
             st.success('API key already provided!', icon='✅')
-            OpenAI.api_key = st.secrets["api"]["OPENAI_API_KEY "]
+            OpenAI.api_key = st.secrets["api"]["OPENAI_API_KEY"]
         else:
             OpenAI.api_key = st.text_input("Enter OpenAI API Key", type="password")
             if OpenAI.api_key:
