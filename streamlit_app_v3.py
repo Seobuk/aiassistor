@@ -25,22 +25,22 @@ def authenticate():
         #st.rerun()
     else:
         st.error("Access code is incorrect.")
-# def chat_with_openai(prompt, model="gpt-3.5-turbo"):
-#     """
-#     OpenAI API로 프롬프트를 전송하고 응답을 반환합니다.
-#     """
-#     try:
-#         response = client.chat.completions.create(
-#             model=model,
-#             messages=[
-#                 {"role": "system", "content": "You are an AI assistant."},
-#                 {"role": "user", "content": prompt}
-#             ]
-#         )
-#         return response["choices"][0]["message"]["content"].strip()
-#     except Exception as e:
-#         st.error(f"Error communicating with OpenAI: {e}")
-#         return None
+def chat_with_openai(prompt, model="gpt-3.5-turbo"):
+    """
+    OpenAI API로 프롬프트를 전송하고 응답을 반환합니다.
+    """
+    try:
+        response = client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": "You are an AI assistant."},
+                {"role": "user", "content": prompt}
+            ]
+        )
+        return response["choices"][0]["message"]["content"].strip()
+    except Exception as e:
+        st.error(f"Error communicating with OpenAI: {e}")
+        return None
 
 # 초기화
 if "authenticated" not in st.session_state:
