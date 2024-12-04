@@ -74,9 +74,9 @@ else:
     except KeyError:
         st.error("API key not found. Please set it in secrets.toml or Streamlit Cloud Settings.")
 
-    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-    if "openai_model" not in st.session_state:
-        st.session_state["openai_model"] = "gpt-4o-mini"
+    # client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+    # if "openai_model" not in st.session_state:
+    #     st.session_state["openai_model"] = "gpt-4o-mini"
 
 
     if "messages" not in st.session_state.keys():
