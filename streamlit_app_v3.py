@@ -77,13 +77,14 @@ else:
         st.logo(logo,size="large")
         st.title('AI행정원 @NST')
 
-        if "api" in st.secrets and "OPENAI_API_KEY" in st.secrets["api"]:
-            st.success('API key already provided!', icon='✅')
-            OpenAI.api_key = st.secrets["api"]["OPENAI_API_KEY"]
-        else:
-            OpenAI.api_key = st.text_input("Enter OpenAI API Key", type="password")
-            if OpenAI.api_key:
-                st.success('API key provided!', icon='✅')
+    if "api" in st.secrets and "OPENAI_API_KEY" in st.secrets["api"]:
+        st.success('API key already provided!', icon='✅')
+        OpenAI.api_key = st.secrets["api"]["OPENAI_API_KEY"]
+    else:
+        input_key = st.text_input("Enter OpenAI API Key", type="password")
+        if input_key:
+            OpenAI.api_key = input_key
+            st.success('API key provided!', icon='✅')
 
     if "messages" not in st.session_state.keys():
         st.session_state.messages     = [{"role": "assistant", "content": "안녕하세요 저는 AI행정원'에디'입니다."}]
