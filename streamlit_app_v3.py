@@ -97,8 +97,8 @@ else:
                 st.success('API key provided!', icon='✅')
 
     if "messages" not in st.session_state.keys():
-        st.session_state.messages     = [{"role": "assistant", "content": "안녕하세요 저는 AI행정원'에디'입니다."}]
-        st.session_state.messages.append({"role": "assistant", "content": "만나서 반갑습니다."})  # 역할 이름을 "user"로 변경
+        st.session_state.messages     = [{"role": "system", "content": "안녕하세요 저는 AI행정원'에디'입니다."}]
+        st.session_state.messages.append({"role": "system", "content": "만나서 반갑습니다."})  # 역할 이름을 "user"로 변경
 
     # Display or clear chat messages
     for message in st.session_state.messages:
@@ -127,6 +127,6 @@ else:
             # OpenAI API 요청 및 응답
         response = chat_with_openai(st.session_state.messages)
         if response:
-            st.session_state.messages.append({"role": "assistant", "content": response.content})
-            with st.chat_message("assistant"):
+            st.session_state.messages.append({"role": "system", "content": response.content})
+            with st.chat_message("system"):
                 st.write(response.content)
