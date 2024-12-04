@@ -27,6 +27,11 @@ st.logo(logo,size="large")
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
+
+# API 키 설정
+client.api_key = st.secrets["api"]["openai_api"]
+
+
 # 인증 페이지
 if not st.session_state.authenticated:
 
@@ -102,18 +107,18 @@ else:
             st.write(prompt)
 
 
-    # completion = client.chat.completions.create(
-    #     model="gpt-4o-mini",
-    #     messages=[
-    #         {"role": "system", "content": "You are a helpful assistant."},
-    #         {
-    #             "role": "user",
-    #             "content": st.session_state.messages
-    #         }
-    #     ]
-    # )
-    # st.write(completion.choices[0].message)
-    # # print(completion.choices[0].message)
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {
+                "role": "user",
+                "content": st.session_state.messages
+            }
+        ]
+    )
+    st.write(completion.choices[0].message)
+    # print(completion.choices[0].message)
 
 
 
