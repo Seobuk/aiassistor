@@ -127,11 +127,11 @@ else:
 
         if "api" in st.secrets and "OPENAI_API_KEY" in st.secrets["api"]:
             st.success('API key already provided!', icon='✅')
-            OpenAI.api_key = st.secrets["api"]["OPENAI_API_KEY"]
+            AsyncOpenAI.api_key = st.secrets["api"]["OPENAI_API_KEY"]
         else:
             input_key = st.text_input("Enter OpenAI API Key", type="password")
             if input_key:
-                OpenAI.api_key = input_key
+                AsyncOpenAI.api_key = input_key
                 st.success('API key provided!', icon='✅')
 
     if "messages" not in st.session_state.keys():
@@ -157,7 +157,7 @@ else:
 
 
     # User-provided prompt
-    if prompt := st.chat_input(disabled=not OpenAI.api_key):  
+    if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):  
         st.session_state.messages.append({"role": "user", "content": prompt})  # 역할 이름을 "user"로 변경
         with st.chat_message("user"):  # 역할 이름에 맞게 "user"로 수정
             st.write(prompt)
