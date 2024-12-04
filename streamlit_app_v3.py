@@ -87,8 +87,6 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
                     - 사용자의 투표와 피드백이 중요함.
                     """
                 }
-            ]
-                
             ] + messages,  # 전체 대화 기록 전달
             stream=True
         )
