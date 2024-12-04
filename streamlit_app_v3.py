@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
 import os
-# import openai
+from openai import OpenAI
+client = OpenAI()
 
 import streamlit_authenticator as stauth
 from streamlit_authenticator.utilities import (CredentialsError,
@@ -99,6 +100,36 @@ else:
         st.session_state.messages.append({"role": "user", "content": prompt})  # 역할 이름을 "user"로 변경
         with st.chat_message("user"):  # 역할 이름에 맞게 "user"로 수정
             st.write(prompt)
+
+
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {
+                "role": "user",
+                "content": st.session_state.messages
+            }
+        ]
+    )
+    st.write(completion.choices[0].message)
+    # print(completion.choices[0].message)
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # def generate_openai_rsponse(prompt_input)
+    #     string_dialogue = "You are a helpful assistant. You do not respond as 'User' or pretend to be 'User'. You only respond once as 'Assistant'."
+        
 
 
 # # Function for generating LLaMA2 response
