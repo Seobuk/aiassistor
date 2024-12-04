@@ -84,15 +84,13 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
                 ] + messages,  # 전체 대화 기록 전달
                 stream=True
             )
-        streamed_text = "# "
-        async for chunk in stream:
+        for chunk in stream:
             chunk_content = chunk.choices[0].delta.content
-            if chunk_content is not None:
+            if chunk_content:
                 response_content += chunk_content
-                streamed_text = streamed_text + chunk_content
-                placeholder.info(streamed_text)
+                placeholder.info(response_content)  # 실시간 업데이트
     except Exception as e:
-        placeholder.error("오류 발생: " + str(e))
+        placeholder.error(f"오류 발생: {e}")
     return response_content
 
 
@@ -141,6 +139,7 @@ else:
                 st.success('API key provided!', icon='✅')
 
     if "messages" not in st.session_state.keys():
+        st.session_state.messages       = []  # 세션에 메시지 기록 초기화
         st.session_state.messages     = [{"role": "assistant", "content": "안녕하세요 저는 AI행정원'에디'입니다."}]
         st.session_state.messages.append({"role": "assistant", "content": "만나서 반갑습니다."})  # 역할 이름을 "user"로 변경
 
