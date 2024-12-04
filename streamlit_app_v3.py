@@ -20,12 +20,18 @@ st.logo(logo,size="large")
 
 # # 레이아웃 설정
 # st.set_page_config(layout="wide")
-
+def authenticate():
+    if st.session_state.password_input == st.secrets["auth"]["password"]:
+        st.session_state.authenticated = True
+        st.rerun()
+    else:
+        st.error("Access code is incorrect.")
 
 
 # 초기화
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
+
 
 
 
@@ -48,12 +54,10 @@ if not st.session_state.authenticated:
         on_change=lambda: authenticate()  # 엔터키로 처리
     )
 
-    def authenticate():
-        if st.session_state.password_input == st.secrets["auth"]["password"]:
-            st.session_state.authenticated = True
-            st.rerun()
-        else:
-            st.error("Access code is incorrect.")
+    # 버튼 클릭 처리
+    if st.button("Enter"):
+        authenticate()  # 버튼으로 처리
+
 
 
 else:
