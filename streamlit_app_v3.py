@@ -23,7 +23,7 @@ st.logo(logo,size="large")
 def authenticate():
     if st.session_state.password_input == st.secrets["auth"]["password"]:
         st.session_state.authenticated = True
-        st.rerun()
+        #st.rerun()
     else:
         st.error("Access code is incorrect.")
 
