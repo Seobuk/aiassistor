@@ -58,21 +58,21 @@ else:
 
         if "api" in st.secrets and "openai_api" in st.secrets["api"]:
             st.success('API key already provided!', icon='✅')
-            openai_api = st.secrets["api"]["openai_api"]
+            OpenAI.api_key = st.secrets["api"]["openai_api"]
         else:
-            openai_api = st.text_input("Enter OpenAI API Key", type="password")
-            if openai_api:
+            OpenAI.api_key = st.text_input("Enter OpenAI API Key", type="password")
+            if OpenAI.api_key:
                 st.success('API key provided!', icon='✅')
 
     # Store LLM generated responses
 
     
-    # API 키 로드
-    try:
-        OpenAI.api_key = st.secrets["api"]["openai_api"]
-        st.success("API key loaded successfully!")
-    except KeyError:
-        st.error("API key not found. Please set it in secrets.toml or Streamlit Cloud Settings.")
+    # # API 키 로드
+    # try:
+    #     OpenAI.api_key = st.secrets["api"]["openai_api"]
+    #     st.success("API key loaded successfully!")
+    # except KeyError:
+    #     st.error("API key not found. Please set it in secrets.toml or Streamlit Cloud Settings.")
 
     # client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
     # if "openai_model" not in st.session_state:
