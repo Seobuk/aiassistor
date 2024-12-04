@@ -25,12 +25,32 @@ def authenticate():
         #st.rerun()
     else:
         st.error("Access code is incorrect.")
-def chat_with_openai(messages, model="gpt-4"):
+# def chat_with_openai(messages, model="gpt-4"):
+#     """
+#     OpenAI API로 프롬프트를 전송하고 응답을 반환합니다.
+#     """
+#     try:
+#         completion = client.chat.completions.create(
+#             model=model,
+#             messages=[
+#                 {"role": "system", "content": "당신은 연구 행정을 지원하는 AI행정원입니다."},
+#                 {"role": "system", "content": "당신의 이름은 에디입니다."},
+#                 {"role": "system", "content": "주요 역할: 한글 문서(HWP) 텍스트 추출 및 서식화, 예산 데이터 관리(Excel 연동), 표준화된 문서 템플릿 지원."},
+#                 {"role": "system", "content": "대화는 반드시 한국어로 작성하며, 사용자가 이해하기 쉽고 명확한 방식으로 답변하십시오."},
+#                 {"role": "user", "content": "당신의 목표는 연구 프로젝트의 행정 업무를 돕는 것입니다. 예를 들어, 통합 계획서 준비, 예산 동기화, 그리고 기관별 문서 커스터마이징을 지원합니다."}
+#             ] + messages  # 전체 대화 기록 전달
+            
+#         )
+#         return completion.choices[0].message
+#     except Exception as e:
+#         st.error(f"Error communicating with OpenAI: {e}")
+#         return None
+def chat_with_openai_stream(messages, model="gpt-4"):
     """
-    OpenAI API로 프롬프트를 전송하고 응답을 반환합니다.
+    OpenAI API로 프롬프트를 스트리밍 방식으로 전송하고 응답을 실시간으로 반환합니다.
     """
     try:
-        completion = client.chat.completions.create(
+        response = client.ChatCompletion.create(
             model=model,
             messages=[
                 {"role": "system", "content": "당신은 연구 행정을 지원하는 AI행정원입니다."},
@@ -38,9 +58,17 @@ def chat_with_openai(messages, model="gpt-4"):
                 {"role": "system", "content": "주요 역할: 한글 문서(HWP) 텍스트 추출 및 서식화, 예산 데이터 관리(Excel 연동), 표준화된 문서 템플릿 지원."},
                 {"role": "system", "content": "대화는 반드시 한국어로 작성하며, 사용자가 이해하기 쉽고 명확한 방식으로 답변하십시오."},
                 {"role": "user", "content": "당신의 목표는 연구 프로젝트의 행정 업무를 돕는 것입니다. 예를 들어, 통합 계획서 준비, 예산 동기화, 그리고 기관별 문서 커스터마이징을 지원합니다."}
-            ] + messages  # 전체 대화 기록 전달
+            ] + messages,
+            stream=True,  # 스트리밍 활성화
         )
-        return completion.choices[0].message
+        
+        full_response = ""
+        for chunk in response:
+            # 각 스트림 덩어리를 순차적으로 처리
+            chunk_message = chunk["choices"][0]["delta"].get("content", "")
+            full_response += chunk_message
+            yield chunk_message  # 한 줄씩 스트리밍
+
     except Exception as e:
         st.error(f"Error communicating with OpenAI: {e}")
         return None
@@ -112,15 +140,31 @@ else:
         st.write(f"Uploaded file: {uploaded_file.name}")
 
 
+    # # User-provided prompt
+    # if prompt := st.chat_input(disabled=not OpenAI.api_key):  
+    #     st.session_state.messages.append({"role": "user", "content": prompt})  # 역할 이름을 "user"로 변경
+    #     with st.chat_message("user"):  # 역할 이름에 맞게 "user"로 수정
+    #         st.write(prompt)
+
+    #         # OpenAI API 요청 및 응답
+    #     response = chat_with_openai(st.session_state.messages)
+    #     if response:
+    #         st.session_state.messages.append({"role": "assistant", "content": response.content})
+    #         with st.chat_message("assistant"):
+    #             st.write(response.content)
     # User-provided prompt
     if prompt := st.chat_input(disabled=not OpenAI.api_key):  
         st.session_state.messages.append({"role": "user", "content": prompt})  # 역할 이름을 "user"로 변경
         with st.chat_message("user"):  # 역할 이름에 맞게 "user"로 수정
             st.write(prompt)
 
-            # OpenAI API 요청 및 응답
-        response = chat_with_openai(st.session_state.messages)
-        if response:
-            st.session_state.messages.append({"role": "assistant", "content": response.content})
+        # OpenAI API 요청 및 스트리밍 응답
+        response_stream = chat_with_openai_stream(st.session_state.messages)
+        if response_stream:
             with st.chat_message("assistant"):
-                st.write(response.content)
+                streamed_response = st.empty()  # 빈 컨테이너 생성
+                full_response = ""
+                for chunk in response_stream:
+                    full_response += chunk
+                    streamed_response.markdown(full_response)  # 실시간 업데이트
+                st.session_state.messages.append({"role": "assistant", "content": full_response})
