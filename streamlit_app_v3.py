@@ -161,12 +161,11 @@ else:
         st.write(f"Uploaded file: {uploaded_file.name}")
 
 
-    # User-provided prompt
-    if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):  
-        st.session_state.messages.append({"role": "user", "content": prompt})  # 역할 이름을 "user"로 변경
-        with st.chat_message("user"):  # 역할 이름에 맞게 "user"로 수정
+    # 사용자 입력 처리
+    if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
             st.write(prompt)
-
 
         # GPT 응답 생성
         with st.chat_message("assistant"):
@@ -178,8 +177,6 @@ else:
             st.session_state.messages.append({"role": "assistant", "content": response_content})
             with st.chat_message("assistant"):
                 st.write(response_content)
-
-
 
 
 
