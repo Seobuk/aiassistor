@@ -18,7 +18,7 @@ logo = "./asset/logo.png"
 st.logo(logo,size="large")
 
 # # 레이아웃 설정
-# st.set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 def authenticate():
     if st.session_state.password_input == st.secrets["auth"]["password"]:
         st.session_state.authenticated = True
