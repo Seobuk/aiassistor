@@ -27,12 +27,6 @@ st.logo(logo,size="large")
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
-# API 키 로드
-try:
-    OpenAI.api_key = st.secrets["api"]["openai_api"]
-    st.success("API key loaded successfully!")
-except KeyError:
-    st.error("API key not found. Please set it in secrets.toml or Streamlit Cloud Settings.")
 
 
 
@@ -72,9 +66,17 @@ else:
 
     # Store LLM generated responses
 
-    # client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-    # if "openai_model" not in st.session_state:
-    #     st.session_state["openai_model"] = "gpt-4o-mini"
+    
+    # API 키 로드
+    try:
+        OpenAI.api_key = st.secrets["api"]["openai_api"]
+        st.success("API key loaded successfully!")
+    except KeyError:
+        st.error("API key not found. Please set it in secrets.toml or Streamlit Cloud Settings.")
+
+    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+    if "openai_model" not in st.session_state:
+        st.session_state["openai_model"] = "gpt-4o-mini"
 
 
     if "messages" not in st.session_state.keys():
