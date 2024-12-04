@@ -172,7 +172,7 @@ else:
         if response_content:
             st.session_state.messages.append({"role": "assistant", "content": response_content})
             with st.chat_message("assistant"):
-        #         st.write(response.content)
+                 st.write(response_content)
 
 
 
