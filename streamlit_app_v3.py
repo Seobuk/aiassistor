@@ -100,6 +100,28 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
 
 
 
+# ChatGPT 메시지 핸들러 함수
+def chat_message_handler(prompt: str, async_chat_with_openai):
+    """
+    Streamlit 애플리케이션에서 사용자와 ChatGPT의 대화를 처리하는 함수.
+
+    Args:
+        prompt (str): 사용자가 입력한 프롬프트.
+        async_chat_with_openai (function): OpenAI API와 비동기로 통신하는 함수.
+    """
+    # 사용자 메시지 추가
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.write(prompt)
+
+    # GPT 응답 생성
+    with st.chat_message("assistant"):
+        placeholder = st.empty()
+        response_content = asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
+        st.session_state.messages.append({"role": "assistant", "content": response_content})
+        st.write(response_content)
+
+
 # 초기화
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
@@ -154,6 +176,12 @@ else:
         label="연구계획서를 올려주세요",
         type=["hwp", "hwpx"],  # 허용 파일 형식
         accept_multiple_files=False  # 여러 파일 업로드 여부
+
+
+        
+
+
+
     )
 
     # 업로드된 파일 처리
@@ -164,12 +192,4 @@ else:
 
     # 사용자 입력 처리
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.write(prompt)
-
-        # GPT 응답 생성
-        with st.chat_message("assistant"):
-            placeholder = st.empty()
-            response_content = asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
-            st.session_state.messages.append({"role": "assistant", "content": response_content})
+        chat_message_handler(prompt)
