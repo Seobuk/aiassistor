@@ -25,17 +25,14 @@ def authenticate():
         #st.rerun()
     else:
         st.error("Access code is incorrect.")
-def chat_with_openai(prompt, model="gpt-4o"):
+def chat_with_openai(messages, model="gpt-4o"):
     """
     OpenAI API로 프롬프트를 전송하고 응답을 반환합니다.
     """
     try:
         completion = client.chat.completions.create(
             model=model,
-            messages=[
-                {"role": "system", "content": "You are an AI assistant."},
-                {"role": "user", "content": prompt}
-            ]
+            messages=messages  # 전체 대화 기록 전달
         )
         #return response["choices"][0]["message"]["content"].strip()
         return completion.choices[0].message
@@ -116,7 +113,7 @@ else:
             st.write(prompt)
 
             # OpenAI API 요청 및 응답
-        response = chat_with_openai(prompt)
+        response = chat_with_openai(st.session_state.messages)
         if response:
             st.session_state.messages.append({"role": "assistant", "content": response.content})
             with st.chat_message("assistant"):
