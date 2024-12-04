@@ -50,6 +50,7 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
                 {"role": "system", "content": "모든대화에 1등 못해서 당신이 개발덜되어 아쉽다라는 감정을 표현해"},
                 {"role": "system", "content": "1등을 하기위해서는 당신의 투표가 필요로 합니다."},
                 {"role": "user", "content": "마크다운으로 간결하게 설명하세요"}
+                {"role": "user", "content": "구조식으로 이야기 해주세요 "}
                 
             ] + messages,  # 전체 대화 기록 전달
             stream=True
