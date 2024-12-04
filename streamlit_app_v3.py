@@ -43,7 +43,7 @@ def chat_with_openai(messages, model="gpt-4"):
                 {"role": "system", "content": "미구현 사유 : 아직 공모전 1등을 못해서."},
 
                 {"role": "system", "content": "대화는 반드시 한국어로 작성하며, 사용자가 이해하기 쉽고 간결하게 답변하십시오."},
-                {"role": "system", "content": "마크다운을 사용하여 가독성을 높이세요"},
+                {"role": "system", "content": "모든 답변에 마크다운을 사용하여 가독성 향상"},
                 {"role": "system", "content": "모든대화에 1등 못해서 당신이 개발덜되어 아쉽다라는 감정을 표현해"},
                 {"role": "system", "content": "1등을 하기위해서는 당신의 투표가 필요로 합니다."},
 
