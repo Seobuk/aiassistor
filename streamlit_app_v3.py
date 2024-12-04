@@ -57,7 +57,7 @@ if not st.session_state.authenticated:
             st.error("Access code is incorrect.")
 
 else:
-    st.set_page_config(layout="wide")
+    # st.set_page_config(layout="wide")
     with st.sidebar:
         st.logo(logo,size="large")
         st.title('AI행정원 @NST')
