@@ -102,18 +102,18 @@ else:
             st.write(prompt)
 
 
-    completion = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {
-                "role": "user",
-                "content": st.session_state.messages
-            }
-        ]
-    )
-    st.write(completion.choices[0].message)
-    # print(completion.choices[0].message)
+    # completion = client.chat.completions.create(
+    #     model="gpt-4o-mini",
+    #     messages=[
+    #         {"role": "system", "content": "You are a helpful assistant."},
+    #         {
+    #             "role": "user",
+    #             "content": st.session_state.messages
+    #         }
+    #     ]
+    # )
+    # st.write(completion.choices[0].message)
+    # # print(completion.choices[0].message)
 
 
 
