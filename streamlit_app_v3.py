@@ -50,7 +50,7 @@ def chat_with_openai_stream(messages, model="gpt-4"):
     OpenAI API로 프롬프트를 스트리밍 방식으로 전송하고 응답을 실시간으로 반환합니다.
     """
     try:
-        response = client.ChatCompletion.create(
+        response = client.chat.completions.create(
             model=model,
             messages=[
                 {"role": "system", "content": "당신은 연구 행정을 지원하는 AI행정원입니다."},
