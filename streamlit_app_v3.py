@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import os
 from openai import OpenAI
-client = OpenAI()
 
 import streamlit_authenticator as stauth
 from streamlit_authenticator.utilities import (CredentialsError,
@@ -31,7 +30,7 @@ def chat_with_openai(prompt, model="gpt-3.5-turbo"):
     OpenAI API로 프롬프트를 전송하고 응답을 반환합니다.
     """
     try:
-        response = OpenAI.ChatCompletion.create(
+        response = OpenAI.chat.completions.create(
             model=model,
             messages=[
                 {"role": "system", "content": "You are an AI assistant."},
