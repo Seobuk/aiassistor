@@ -110,8 +110,8 @@ if not st.session_state.authenticated:
     col1, col2 = st.columns([2, 1])  # 비율 설정 (2:1)
 
     with col1:
-        st.title("NST 연구행정혁신 공모전 \n AI 행정원 : 에디",)
-        # st.title("AI 행정원 : 에디")
+        st.title("NST 연구행정혁신 공모전 ")
+        st.title("AI 행정원 : 에디")
 
     with col2:
         st.image(에디)
