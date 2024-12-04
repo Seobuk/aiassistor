@@ -113,7 +113,7 @@ else:
 
 
     # User-provided prompt
-    if prompt := st.chat_input(disabled=not openai_api):  # `replicate_api` 대신 `openai_api` 사용
+    if prompt := st.chat_input(disabled=not OpenAI.api_key):  # `replicate_api` 대신 `openai_api` 사용
         st.session_state.messages.append({"role": "user", "content": prompt})  # 역할 이름을 "user"로 변경
         with st.chat_message("user"):  # 역할 이름에 맞게 "user"로 수정
             st.write(prompt)
