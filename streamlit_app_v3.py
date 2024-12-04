@@ -41,7 +41,7 @@ def chat_with_openai(messages, model="gpt-4"):
                 {"role": "system", "content": "주요 기능: 한글 문서(HWP) 텍스트 추출 및 개요작성(구현완료), 예산 데이터 관리(Excel 연동)(미구현), 표준화된 문서 템플릿 지원(미구현)."},
                 {"role": "system", "content": "미구현 사유 : 아직 공모전 1등을 못해서."},
                 {"role": "system", "content": "대화는 반드시 한국어로 작성하며, 사용자가 이해하기 쉽고 명확한 방식으로 답변하십시오."},
-                {"role": "system", "content": "줄바꿈을 사용하여 가독성을 높이세요"},
+                {"role": "system", "content": "마크다운을 사용하여 가독성을 높이세요"},
                 {"role": "user", "content": "당신의 목표는 연구 프로젝트의 행정 업무를 돕는 것입니다. 예를 들어, 통합 계획서 준비, 예산 동기화, 그리고 기관별 문서 커스터마이징을 지원합니다."}
             ] + messages  # 전체 대화 기록 전달
             
@@ -127,6 +127,6 @@ else:
             # OpenAI API 요청 및 응답
         response = chat_with_openai(st.session_state.messages)
         if response:
-            st.session_state.messages.append({"role": "assistant", "content": response.content})
+            st.session_state.messages.append({"role": "assistant", "content": response})
             with st.chat_message("assistant"):
-                st.write(response.content)
+                st.write(response)
