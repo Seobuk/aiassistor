@@ -16,8 +16,7 @@ logo = "./asset/logo.png"
 에디 = "./asset/ed.png"
 
 st.logo(logo,size="large")
-OpenAI.api_key = st.secrets["api"]["openai_api"]
-client = OpenAI()
+
 # # 레이아웃 설정
 # st.set_page_config(layout="wide")
 def authenticate():
@@ -78,9 +77,9 @@ else:
         st.logo(logo,size="large")
         st.title('AI행정원 @NST')
 
-        if "api" in st.secrets and "openai_api" in st.secrets["api"]:
+        if "api" in st.secrets and "OPENAI_API_KEY " in st.secrets["api"]:
             st.success('API key already provided!', icon='✅')
-            OpenAI.api_key = st.secrets["api"]["openai_api"]
+            OpenAI.api_key = st.secrets["api"]["OPENAI_API_KEY "]
         else:
             OpenAI.api_key = st.text_input("Enter OpenAI API Key", type="password")
             if OpenAI.api_key:
