@@ -166,8 +166,11 @@ else:
          # OpenAI 스트리밍 응답 처리
         with st.chat_message("assistant"):
             placeholder = st.empty()
-            asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
+            response_content =  asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
 
+    # 응답 데이터를 세션 상태에 추가
+        if response_content:
+            st.session_state.messages.append({"role": "assistant", "content": response_content})
 
 
 
