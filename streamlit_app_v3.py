@@ -88,7 +88,8 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
                 }
             ] + messages,  # 전체 대화 기록 전달
             stream=True
-        )
+            store=True
+          )
     streamed_text = ""
     async for chunk in stream:
         chunk_content = chunk.choices[0].delta.content
