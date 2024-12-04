@@ -27,10 +27,13 @@ st.logo(logo,size="large")
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
+# API 키 로드
+try:
+    OpenAI.api_key = st.secrets["OPENAI_API_KEY"]
+    st.success("API key loaded successfully!")
+except KeyError:
+    st.error("API key not found. Please set it in secrets.toml or Streamlit Cloud Settings.")
 
-
-# # API 키 설정
-# Set OpenAI API key from Streamlit secrets
 
 
 # 인증 페이지
