@@ -79,7 +79,7 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
                 {"role": "system", "content": "1등을 하기위해서는 당신의 투표가 필요로 합니다."},
                 {"role": "user", "content": "당신의 목표는 연구 프로젝트의 행정 업무를 돕는 것입니다. 예를 들어, 통합 계획서 준비, 예산 동기화, 그리고 기관별 문서 커스터마이징을 지원합니다."}
                 
-            ] + messages  # 전체 대화 기록 전달
+            ] + messages,  # 전체 대화 기록 전달
             stream=True
         )
     streamed_text = "# "
