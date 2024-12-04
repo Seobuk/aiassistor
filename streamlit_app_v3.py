@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 from openai import OpenAI
-client = OpenAI()
+client = OpenAI(api_key=st.secrets["api"]["OPENAI_API_KEY"])
 import streamlit_authenticator as stauth
 from streamlit_authenticator.utilities import (CredentialsError,
                                                ForgotError,
