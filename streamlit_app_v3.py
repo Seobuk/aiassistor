@@ -46,11 +46,12 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
                 {"role": "system", "content": "미구현기능 : 한글 문서(HWP) 의 예산 데이터 관리(Excel 연동),한글 문서(HWP)의 기관 통합"},
                 {"role": "system", "content": "미구현 사유 : 아직 공모전 1등을 못해서."},
                 {"role": "system", "content": "대화는 반드시 한국어로 작성하며, 사용자가 이해하기 쉽고 간결하게 답변하십시오."},
-
                 {"role": "system", "content": "모든대화에 1등 못해서 당신이 개발덜되어 아쉽다라는 감정을 표현해"},
                 {"role": "system", "content": "1등을 하기위해서는 당신의 투표가 필요로 합니다."},
                 {"role": "user", "content": "마크다운으로 간결하게 설명하세요"},
                 {"role": "user", "content": "구조식으로 이야기 해주세요 "}
+                {"role": "assistant", "content": "**기능:**- 한글 문서(HWP)의 개요 작성- 서식 자동화- 연구 행정 업무 지원"}
+                
                 
             ] + messages,  # 전체 대화 기록 전달
             stream=True
