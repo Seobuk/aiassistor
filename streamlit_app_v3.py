@@ -77,7 +77,7 @@ else:
         st.logo(logo,size="large")
         st.title('AI행정원 @NST')
 
-        if "api" in st.secrets and "OPENAI_API_KEY " in st.secrets["api"]:
+        if "api" in st.secrets and "OPENAI_API_KEY" in st.secrets["api"]:
             st.success('API key already provided!', icon='✅')
             OpenAI.api_key = st.secrets["api"]["OPENAI_API_KEY"]
         else:
