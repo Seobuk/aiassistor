@@ -171,39 +171,3 @@ else:
         with st.chat_message("assistant"):
             placeholder = st.empty()
             response_content = asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
-
-        # 응답 저장
-        if response_content:
-            st.session_state.messages.append({"role": "assistant", "content": response_content})
-            with st.chat_message("assistant"):
-                st.write(response_content)
-
-
-
-
-
-
-
-
-    #      # OpenAI 스트리밍 응답 처리
-    #     with st.chat_message("assistant"):
-    #         placeholder = st.empty()
-    #         response_content =  asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
-
-    # # 응답 데이터를 세션 상태에 추가
-    #     if response_content:
-    #         st.session_state.messages.append({"role": "assistant", "content": response_content})
-    #         with st.chat_message("assistant"):
-    #              st.write(response_content)
-
-
-
-
-
-
-        #     # OpenAI API 요청 및 응답
-        # response = chat_with_openai(st.session_state.messages)
-        # if response:
-        #     st.session_state.messages.append({"role": "assistant", "content": response.content})
-        #     with st.chat_message("assistant"):
-        #         st.write(response.content)
