@@ -61,6 +61,7 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
             streamed_text = streamed_text + chunk_content
             placeholder.info(streamed_text)
 
+    return streamed_text
 
 
 
