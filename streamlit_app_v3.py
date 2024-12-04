@@ -70,10 +70,6 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
-
-
-
-
 # 인증 페이지
 if not st.session_state.authenticated:
 
@@ -139,7 +135,7 @@ else:
         with st.chat_message("user"):
             st.write(prompt)
 
-        # GPT 응답 생성
-        with st.chat_message("assistant"):
-            placeholder = st.empty()
-            response_content = asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
+        # # GPT 응답 생성
+        # with st.chat_message("assistant"):
+        #     placeholder = st.empty()
+        #     response_content = asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
