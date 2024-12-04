@@ -5,7 +5,6 @@ import os
 from openai import AsyncOpenAI
 import asyncio
 
-
 #client = OpenAI(api_key=st.secrets["api"]["OPENAI_API_KEY"])
 client = AsyncOpenAI(api_key=st.secrets["api"]["OPENAI_API_KEY"])
 
@@ -163,7 +162,6 @@ else:
         # 파일 이름 표시
         st.write(f"Uploaded file: {uploaded_file.name}")
 
-
     # 사용자 입력 처리
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
         st.session_state.messages.append({"role": "user", "content": prompt})
@@ -175,8 +173,3 @@ else:
             placeholder = st.empty()
             response_content = asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
             st.session_state.messages.append({"role": "assistant", "content": response_content})
-
-        # st.write(response_content)
-
-            # st.session_state.messages.append(response_content)
-            
