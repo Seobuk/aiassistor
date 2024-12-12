@@ -155,12 +155,6 @@ else:
         label="연구계획서를 올려주세요",
         type=["hwp", "hwpx"],  # 허용 파일 형식
         accept_multiple_files=False  # 여러 파일 업로드 여부
-
-
-        
-
-
-
     )
 
     # 업로드된 파일 처리
@@ -168,6 +162,9 @@ else:
         st.sidebar.success("File uploaded successfully!")
         # 파일 이름 표시
         st.write(f"Uploaded file: {uploaded_file.name}")
+
+    if st.button('클릭하세요'):
+        st.write("버튼이 눌렸습니다!")
 
     # 사용자 입력 처리
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
