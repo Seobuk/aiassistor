@@ -147,7 +147,7 @@ else:
             accept_multiple_files=False  
             )
         if st.button('연구행정 자동화 데모 [click] '):
-            st.session_state.messages.append({"role": "assistant", "content": 에디 })
+            st.session_state.messages.append({"role": "assistant", "content": st.image(에디) })
                 
 
     if "messages" not in st.session_state.keys():
