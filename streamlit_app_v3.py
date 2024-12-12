@@ -34,12 +34,13 @@ def authenticate():
 
 def openai_prompt(prompt):
     st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user"):
-        st.write(prompt)
+    
 
 def openai(prompt):
     openai_prompt(prompt)
-
+    with st.chat_message("user"):
+        st.write(prompt)
+        
     # GPT 응답 생성
     with st.chat_message("assistant"):
         placeholder = st.empty()
