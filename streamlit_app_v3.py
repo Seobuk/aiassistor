@@ -114,7 +114,8 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
 # 초기화
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
-
+    
+st.session_state.trigger_introduce = False
 # 인증 페이지
 if not st.session_state.authenticated:
 
