@@ -146,7 +146,7 @@ else:
             type=["hwp", "hwpx"], 
             accept_multiple_files=False  
             )
-        if st.sidbar.button('클릭하세요'):
+        if st.button('클릭하세요'):
             st.write("버튼이 눌렸습니다!")
                 
 
