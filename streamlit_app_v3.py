@@ -201,10 +201,13 @@ else:
             # 메시지 내용이 이미지 파일 경로인지 확인
             if isinstance(message["content"], str) and message["content"].lower().endswith(('.png', '.jpg', '.jpeg')):
                 st.image(message["content"])
+                asyncio.sleep(0.5)
+                st.image(message["content"])
+                asyncio.sleep(0.5)
+                st.image(message["content"])
+                
             else:
                 st.write(message["content"])
-                # if message["content"] == "에디 너에 대해서 자세히 알고싶어":
-                    # st.write(message["content"])
 
 
 
