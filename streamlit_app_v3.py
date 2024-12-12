@@ -147,13 +147,14 @@ else:
             accept_multiple_files=False  
             )
         if st.button('연구행정 자동화 데모 [click] '):
+            st.session_state.messages.append({"role": "assistant", "content": "./asset/ed.png"})
+            
+            # # 이미지를 표시
+            # st.session_state.messages.append({
+            #     "role": "assistant",
+            #     "content": "./asset/ed.png"}
 
-            # 이미지를 표시
-            st.session_state.messages.append({
-                "role": "assistant",
-                "content": 에디}
-
-            ) 
+            
 
 
 
@@ -166,7 +167,12 @@ else:
     # Display or clear chat messages
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
-            st.write(message["content"])
+            #st.write(message["content"])
+            # 메시지 내용이 이미지 파일 경로인지 확인
+            if isinstance(message["content"], str) and message["content"].lower().endswith(('.png', '.jpg', '.jpeg')):
+                st.image(message["content"])
+            else:
+                st.write(message["content"])
 
 
 
