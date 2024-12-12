@@ -146,8 +146,8 @@ else:
             type=["hwp", "hwpx"], 
             accept_multiple_files=False  
             )
-        if st.button('클릭하세요'):
-            st.write("버튼이 눌렸습니다!")
+        if st.button('연구행정 자동화 데모 [click] '):
+            st.session_state.messages.append({"role": "assistant", "content": 에디 })
                 
 
     if "messages" not in st.session_state.keys():
