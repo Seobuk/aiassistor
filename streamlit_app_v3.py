@@ -155,6 +155,12 @@ else:
         label="**연구계획서를 올려주세요**",
         type=["hwp", "hwpx"],  # 허용 파일 형식
         accept_multiple_files=False  # 여러 파일 업로드 여부
+
+
+    if st.button("**연구행정 자동화 시뮬레이션 [click]**"):
+        st.session_state.messages.append({"role": "user", "content": "내가 이렇게 주면"}) 
+        st.session_state.messages.append({"role": "assistant", "content": "이렇게 나오는거야 "})
+    # 사용자 입력 처리
     )
 
     # 업로드된 파일 처리
@@ -163,10 +169,7 @@ else:
         # 파일 이름 표시
         st.write(f"Uploaded file: {uploaded_file.name}")
 
-    if st.button('연구행정 자동화 시뮬레이션 [click]'):
-        st.session_state.messages.append({"role": "user", "content": "내가 이렇게 주면"}) 
-        st.session_state.messages.append({"role": "assistant", "content": "이렇게 나오는거야 "})
-    # 사용자 입력 처리
+
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
