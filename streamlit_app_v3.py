@@ -146,7 +146,7 @@ else:
         #     type=["hwp", "hwpx"], 
         #     accept_multiple_files=False  
         #     )
-        if st.button('에디 너를 소개해줘  1 [click] '):
+        if st.button('에디 너를 소개해줘 [click] '):
             st.session_state.messages.append({"role": "user", "content": "에디 너에대하여 자세히 알고싶어"})
                     # GPT 응답 생성
             with st.chat_message("assistant"):
