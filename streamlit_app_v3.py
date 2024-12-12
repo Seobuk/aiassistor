@@ -163,9 +163,9 @@ else:
         # 파일 이름 표시
         st.write(f"Uploaded file: {uploaded_file.name}")
 
-    if st.button('클릭하세요'):
-        st.write("버튼이 눌렸습니다!")
-
+    if st.button('연구행정 자동화 시뮬레이션 [click]'):
+        st.session_state.messages.append({"role": "user", "content": "내가 이렇게 주면"}) 
+        st.session_state.messages.append({"role": "assistant", "content": "이렇게 나오는거야 "})
     # 사용자 입력 처리
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
         st.session_state.messages.append({"role": "user", "content": prompt})
