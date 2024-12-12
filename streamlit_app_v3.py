@@ -141,12 +141,25 @@ else:
                 AsyncOpenAI.api_key = input_key
                 st.success('API key provided!', icon='✅')
 
-        uploaded_file = st.sidebar.file_uploader(
-            label="**연구계획서를 올려주세요**",
-            type=["hwp", "hwpx"], 
-            accept_multiple_files=False  
-            )
-        if st.button('연구행정 자동화 데모 [click] '):
+        # uploaded_file = st.sidebar.file_uploader(
+        #     label="**연구계획서를 올려주세요**",
+        #     type=["hwp", "hwpx"], 
+        #     accept_multiple_files=False  
+        #     )
+        if st.button('에디 너를 소개해줘  1 [click] '):
+            st.session_state.messages.append({"role": "user", "content": "에디 너에대하여 자세히 알고싶어"})
+                    # GPT 응답 생성
+            with st.chat_message("assistant"):
+                placeholder = st.empty()
+                response_content = asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
+                st.session_state.messages.append({"role": "assistant", "content": response_content})
+            
+            # # 이미지를 표시
+            # st.session_state.messages.append({
+            #     "role": "assistant",
+            #     "content": "./asset/ed.png"}
+
+        if st.button('연구행정 자동화 데모 1 [click] '):
             st.session_state.messages.append({"role": "assistant", "content": "./asset/ed.png"})
             
             # # 이미지를 표시
@@ -176,11 +189,11 @@ else:
 
 
 
-    # 업로드된 파일 처리
-    if uploaded_file:
-        st.sidebar.success("File uploaded successfully!")
-        # 파일 이름 표시
-        st.write(f"Uploaded file: {uploaded_file.name}")
+    # # 업로드된 파일 처리
+    # if uploaded_file:
+    #     st.sidebar.success("File uploaded successfully!")
+    #     # 파일 이름 표시
+    #     st.write(f"Uploaded file: {uploaded_file.name}")
 
 
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
