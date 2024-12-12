@@ -157,7 +157,7 @@ else:
         #     )
         if st.button('에디 너를 소개해줘 [click] '):
             # st.session_state.trigger_introduce = True
-            st.session_state.messages.append({"role": "assistant", "content": "introduce"})
+            # st.session_state.messages.append({"role": "assistant", "content": "introduce"})
             openai("에디 너에 대해서 자세히 알고싶어")
             # # 이미지를 표시
             # st.session_state.messages.append({
