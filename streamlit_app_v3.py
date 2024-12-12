@@ -201,11 +201,8 @@ else:
             # 메시지 내용이 이미지 파일 경로인지 확인
             if isinstance(message["content"], str) and message["content"].lower().endswith(('.png', '.jpg', '.jpeg')):
                 st.image(message["content"])
-                time.sleep(0.5)
                 st.image(message["content"])
-                time.sleep(0.5)
                 st.image(message["content"])
-                
             else:
                 st.write(message["content"])
 
