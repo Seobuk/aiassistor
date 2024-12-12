@@ -170,8 +170,7 @@ else:
             # st.session_state.trigger_introduce = True
             # st.session_state.messages.append({"role": "assistant", "content": "introduce"})
             # openai_prompt("에디 너에 대해서 자세히 알고싶어")
-            st.session_state.messages.append({"role": "user", "content": "에디 너에 대해서 자세히 알고싶어", "introduce" : True})
-
+            st.session_state.messages.append({"role": "user", "content": "에디 너에 대해서 자세히 알고싶어"})
             
             # # 이미지를 표시
             # st.session_state.messages.append({
@@ -205,7 +204,7 @@ else:
                 st.image(message["content"])
             else:
                 st.write(message["content"])
-                if "introduce" in list(message.keys()):
+                if message["content"] == "에디 너에 대해서 자세히 알고싶어":
                     openai_respond()
 
 
