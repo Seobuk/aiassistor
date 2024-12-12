@@ -151,7 +151,7 @@ else:
             # 이미지를 표시
             st.session_state.messages.append({
                 "role": "assistant",
-                "content": st.image(에디)}
+                "content": 에디}
 
             ) 
 
