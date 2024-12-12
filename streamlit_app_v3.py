@@ -147,7 +147,8 @@ if not st.session_state.authenticated:
         authenticate()  # 버튼으로 처리
 
 else:
-
+    trigger_introduce = False
+    
     with st.sidebar:
         st.logo(logo,size="large")
         st.title('AI행정원[에디]')
@@ -167,7 +168,8 @@ else:
         #     accept_multiple_files=False  
         #     )
         if st.button('에디 너를 소개해줘 [click] '):
-            st.session_state.trigger_introduce = True
+            trigger_introduce = not trigger_introduce
+            # st.session_state.trigger_introduce = True
             # st.session_state.messages.append({"role": "assistant", "content": "introduce"})
             # openai_prompt("에디 너에 대해서 자세히 알고싶어")
             # st.session_state.messages.append({"role": "user", "content": "에디 너에 대해서 자세히 알고싶어"})
@@ -216,13 +218,14 @@ else:
     #     # 파일 이름 표시
     #     st.write(f"Uploaded file: {uploaded_file.name}")
 
-
-    if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
-        if st.session_state.trigger_introduce == True: 
-            st.session_state.trigger_introduce = False
-            openai("에디 너에 대해서 자세히 알고싶어")
-        else :
+    if not trigger_introduce:
+        
+        if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
             openai(prompt)
+            
+    else:
+        st.write("??")
+        
         # st.session_state.messages.append({"role": "user", "content": prompt})
         # with st.chat_message("user"):
         #     st.write(prompt)
