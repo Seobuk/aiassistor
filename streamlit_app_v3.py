@@ -31,6 +31,16 @@ def authenticate():
     else:
         st.error("Access code is incorrect.")
 
+def openai(prompt):
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.write(prompt)
+
+    # GPT 응답 생성
+    with st.chat_message("assistant"):
+        placeholder = st.empty()
+        response_content = asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
+        st.session_state.messages.append({"role": "assistant", "content": response_content})
 
 async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
     stream = await client.chat.completions.create(
@@ -147,8 +157,7 @@ else:
         #     accept_multiple_files=False  
         #     )
         if st.button('에디 너를 소개해줘 [click] '):
-            st.session_state.messages.append({"role": "user", "content": "에디 너에대하여 자세히 알고싶어"})
-                    # GPT 응답 생성
+            openai("에디 너에 대해서 자세히 알고싶어")
 
             
             # # 이미지를 표시
@@ -194,12 +203,13 @@ else:
 
 
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.write(prompt)
+        openai(prompt)
+        # st.session_state.messages.append({"role": "user", "content": prompt})
+        # with st.chat_message("user"):
+        #     st.write(prompt)
 
-        # GPT 응답 생성
-        with st.chat_message("assistant"):
-            placeholder = st.empty()
-            response_content = asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
-            st.session_state.messages.append({"role": "assistant", "content": response_content})
+        # # GPT 응답 생성
+        # with st.chat_message("assistant"):
+        #     placeholder = st.empty()
+        #     response_content = asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
+        #     st.session_state.messages.append({"role": "assistant", "content": response_content})
