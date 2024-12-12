@@ -149,10 +149,7 @@ else:
         if st.button('에디 너를 소개해줘 [click] '):
             st.session_state.messages.append({"role": "user", "content": "에디 너에대하여 자세히 알고싶어"})
                     # GPT 응답 생성
-            with st.chat_message("assistant"):
-                placeholder = st.empty()
-                response_content = asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
-                st.session_state.messages.append({"role": "assistant", "content": response_content})
+
             
             # # 이미지를 표시
             # st.session_state.messages.append({
