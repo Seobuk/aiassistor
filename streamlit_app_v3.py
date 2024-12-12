@@ -114,7 +114,7 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
 # 초기화
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
-    
+
 st.session_state.trigger_introduce = False
 # 인증 페이지
 if not st.session_state.authenticated:
@@ -204,7 +204,7 @@ else:
 
 
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
-        if "trigger_introduce" in st.session_state: 
+        if st.session_state.trigger_introduce == True: 
             st.session_state.trigger_introduce = False
             openai("에디 너에 대해서 자세히 알고싶어")
         else :
