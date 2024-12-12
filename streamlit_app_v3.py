@@ -187,9 +187,8 @@ else:
         with st.chat_message(message["role"]):
             #st.write(message["content"])
             # 메시지 내용이 이미지 파일 경로인지 확인
-            if isinstance(message["content"], str):
-                if message["content"].lower().endswith(('.png', '.jpg', '.jpeg')):
-                    st.image(message["content"])
+            if isinstance(message["content"], str) and message["content"].lower().endswith(('.png', '.jpg', '.jpeg')):
+                st.image(message["content"])
             else:
                 st.write(message["content"])
 
