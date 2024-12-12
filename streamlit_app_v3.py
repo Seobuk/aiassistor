@@ -31,10 +31,14 @@ def authenticate():
     else:
         st.error("Access code is incorrect.")
 
-def openai(prompt):
+
+def openai_prompt(prompt):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.write(prompt)
+
+def openai(prompt):
+    openai_prompt(prompt)
 
     # GPT 응답 생성
     with st.chat_message("assistant"):
@@ -160,7 +164,9 @@ else:
         if st.button('에디 너를 소개해줘 [click] '):
             # st.session_state.trigger_introduce = True
             # st.session_state.messages.append({"role": "assistant", "content": "introduce"})
-            openai("에디 너에 대해서 자세히 알고싶어")
+            openai_prompt("에디 너에 대해서 자세히 알고싶어")
+
+            
             # # 이미지를 표시
             # st.session_state.messages.append({
             #     "role": "assistant",
