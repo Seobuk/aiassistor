@@ -224,7 +224,8 @@ else:
             openai(prompt)
             
     else:
-        st.write("??")
+        openai("에디 너에 대해서 자세히 알고싶어")
+        trigger_introduce = False
         
         # st.session_state.messages.append({"role": "user", "content": prompt})
         # with st.chat_message("user"):
