@@ -4,7 +4,7 @@ import os
 #from openai import OpenAI
 from openai import AsyncOpenAI
 import asyncio
-
+import time
 #client = OpenAI(api_key=st.secrets["api"]["OPENAI_API_KEY"])
 client = AsyncOpenAI(api_key=st.secrets["api"]["OPENAI_API_KEY"])
 
@@ -201,9 +201,9 @@ else:
             # 메시지 내용이 이미지 파일 경로인지 확인
             if isinstance(message["content"], str) and message["content"].lower().endswith(('.png', '.jpg', '.jpeg')):
                 st.image(message["content"])
-                asyncio.sleep(0.5)
+                time.sleep(0.5)
                 st.image(message["content"])
-                asyncio.sleep(0.5)
+                time.sleep(0.5)
                 st.image(message["content"])
                 
             else:
