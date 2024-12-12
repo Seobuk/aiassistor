@@ -155,12 +155,6 @@ else:
 
             ) 
 
-            # 세션 상태에 이미지 관련 메시지를 텍스트로 추가
-            st.session_state.messages.append({
-                "role": "assistant",
-                "content": f"이미지가 표시되었습니다: {에디}"
-            })
-                
 
 
 
