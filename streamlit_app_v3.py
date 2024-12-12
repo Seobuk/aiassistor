@@ -32,7 +32,9 @@ def authenticate():
         st.error("Access code is incorrect.")
 
 def openai(prompt):
-    cc
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.write(prompt)
 
     # GPT 응답 생성
     with st.chat_message("assistant"):
