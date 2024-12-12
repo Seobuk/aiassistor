@@ -141,6 +141,13 @@ else:
                 AsyncOpenAI.api_key = input_key
                 st.success('API key provided!', icon='✅')
 
+        uploaded_file = st.sidebar.file_uploader(
+            label="**연구계획서를 올려주세요**",
+            type=["hwp", "hwpx"], 
+            accept_multiple_files=False  
+            )
+                
+
     if "messages" not in st.session_state.keys():
         st.session_state.messages       = []  # 세션에 메시지 기록 초기화
         st.session_state.messages     = [{"role": "assistant", "content": "안녕하세요 저는 AI행정원'에디'입니다."}]
@@ -151,17 +158,7 @@ else:
         with st.chat_message(message["role"]):
             st.write(message["content"])
 
-    uploaded_file = st.sidebar.file_uploader(
-        label="**연구계획서를 올려주세요**",
-        type=["hwp", "hwpx"],  # 허용 파일 형식
-        accept_multiple_files=False  # 여러 파일 업로드 여부
 
-
-    if st.button("**연구행정 자동화 시뮬레이션 [click]**"):
-        st.session_state.messages.append({"role": "user", "content": "내가 이렇게 주면"}) 
-        st.session_state.messages.append({"role": "assistant", "content": "이렇게 나오는거야 "})
-    # 사용자 입력 처리
-    )
 
     # 업로드된 파일 처리
     if uploaded_file:
