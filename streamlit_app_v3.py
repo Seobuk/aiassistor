@@ -205,7 +205,7 @@ else:
             else:
                 st.write(message["content"])
                 if message["content"] == "에디 너에 대해서 자세히 알고싶어":
-                    openai_respond()
+                    st.write(message["content"])
 
 
 
