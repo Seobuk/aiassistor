@@ -192,8 +192,10 @@ else:
             if isinstance(message["content"], str):
                 if message["content"].lower().endswith(('.png', '.jpg', '.jpeg')):
                     st.image(message["content"])
+
                 elif message["content"] == "introduce":
-                    openai("에디 너에 대해서 자세히 알고싶어")
+                    with st.chat_message("user"):
+                        st.write("에디 너에 대해서 자세히 알고싶어")
             else:
                 st.write(message["content"])
 
