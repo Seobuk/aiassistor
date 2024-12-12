@@ -35,17 +35,21 @@ def authenticate():
 def openai_prompt(prompt):
     st.session_state.messages.append({"role": "user", "content": prompt})
     
-
-def openai(prompt):
-    openai_prompt(prompt)
-    with st.chat_message("user"):
-        st.write(prompt)
-        
+def openai_respond():
     # GPT 응답 생성
     with st.chat_message("assistant"):
         placeholder = st.empty()
         response_content = asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
         st.session_state.messages.append({"role": "assistant", "content": response_content})
+
+
+def openai(prompt):
+    openai_prompt(prompt)
+    
+    with st.chat_message("user"):
+        st.write(prompt)
+
+    openai_respond()
 
 async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
     stream = await client.chat.completions.create(
