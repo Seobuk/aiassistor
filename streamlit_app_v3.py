@@ -149,7 +149,7 @@ else:
         if st.button('연구행정 자동화 데모 [click] '):
 
             # 이미지를 표시
-            st.image(에디, caption="연구행정 자동화 데모 이미지")
+            st.session_state.messages.append(st.image(에디, caption="연구행정 자동화 데모 이미지")) 
 
             # 세션 상태에 이미지 관련 메시지를 텍스트로 추가
             st.session_state.messages.append({
