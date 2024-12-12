@@ -217,19 +217,14 @@ else:
     #     st.sidebar.success("File uploaded successfully!")
     #     # 파일 이름 표시
     #     st.write(f"Uploaded file: {uploaded_file.name}")
-
-    if not trigger_introduce:
         
-        if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
-            openai(prompt)
-            
-    else:
+    if trigger_introduce:
         openai("에디 너에 대해서 자세히 알고싶어")
         trigger_introduce = False
         
-        if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
-            openai(prompt)
-            
+    if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
+        openai(prompt)
+        
         # st.session_state.messages.append({"role": "user", "content": prompt})
         # with st.chat_message("user"):
         #     st.write(prompt)
