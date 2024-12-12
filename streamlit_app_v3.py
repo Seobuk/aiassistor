@@ -147,8 +147,18 @@ else:
             accept_multiple_files=False  
             )
         if st.button('연구행정 자동화 데모 [click] '):
-            st.session_state.messages.append({"role": "assistant", "content": st.image(에디) })
+
+            # 이미지를 표시
+            st.image(에디, caption="연구행정 자동화 데모 이미지")
+
+            # 세션 상태에 이미지 관련 메시지를 텍스트로 추가
+            st.session_state.messages.append({
+                "role": "assistant",
+                "content": f"이미지가 표시되었습니다: {에디}"
+            })
                 
+
+
 
     if "messages" not in st.session_state.keys():
         st.session_state.messages       = []  # 세션에 메시지 기록 초기화
