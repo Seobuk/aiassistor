@@ -130,10 +130,10 @@ else:
 
     with st.sidebar:
         st.logo(logo,size="large")
-        st.title('AI행정원 @NST')
+        st.title('AI행정원[에디]')
 
         if "api" in st.secrets and "OPENAI_API_KEY" in st.secrets["api"]:
-            st.success('API key already provided!', icon='✅')
+            st.success('정상 동작이 가능합니다.', icon='✅')
             AsyncOpenAI.api_key = st.secrets["api"]["OPENAI_API_KEY"]
         else:
             input_key = st.text_input("Enter OpenAI API Key", type="password")
@@ -152,7 +152,7 @@ else:
             st.write(message["content"])
 
     uploaded_file = st.sidebar.file_uploader(
-        label="연구계획서를 올려주세요",
+        label="**연구계획서를 올려주세요**",
         type=["hwp", "hwpx"],  # 허용 파일 형식
         accept_multiple_files=False  # 여러 파일 업로드 여부
     )
