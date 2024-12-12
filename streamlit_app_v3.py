@@ -159,7 +159,7 @@ else:
         #     )
         if st.button('에디 너를 소개해줘 [click] '):
             # st.session_state.trigger_introduce = True
-            st.session_state.messages.append({"role": "assistant", "content": "에디 너에 대해서 자세히 알고싶어"})
+            st.session_state.messages.append({"role": "assistant", "content": "introduce"})
             
             # # 이미지를 표시
             # st.session_state.messages.append({
@@ -189,8 +189,11 @@ else:
         with st.chat_message(message["role"]):
             #st.write(message["content"])
             # 메시지 내용이 이미지 파일 경로인지 확인
-            if isinstance(message["content"], str) and message["content"].lower().endswith(('.png', '.jpg', '.jpeg')):
-                st.image(message["content"])
+            if isinstance(message["content"], str):
+                if message["content"].lower().endswith(('.png', '.jpg', '.jpeg')):
+                    st.image(message["content"])
+                elif message["content"] == "introduce":
+                    openai("에디 너에 대해서 자세히 알고싶어")
             else:
                 st.write(message["content"])
 
