@@ -58,15 +58,15 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
                     구현된 기능:
                     1. 한글 문서(HWP) 개요 작성
                     2. 한글 문서(HWP) 서식 자동화
+                    3. 한글 문서(HWP)의 예산 데이터 관리(Excel 연동)
+                    4. 한글 문서(HWP)의 기관 통합
                     """
                 },
                 {
                     "role": "system",
                     "content": """
-                    미구현 기능:
-                    1. 한글 문서(HWP)의 예산 데이터 관리(Excel 연동)
-                    2. 한글 문서(HWP)의 기관 통합
-                    미구현 사유: 공모전 1등을 아직 달성하지 못함.
+                    서비스오픈 조건 : 공모전 1등달설
+                    서비스오픈 일자 : 2025년 1월
                     """
                 },
                 {
