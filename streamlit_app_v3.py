@@ -188,10 +188,6 @@ else:
             #     "role": "assistant",
             #     "content": "./asset/ed.png"}
 
-            
-
-
-
 
     if "messages" not in st.session_state.keys():
         st.session_state.messages       = []  # 세션에 메시지 기록 초기화
