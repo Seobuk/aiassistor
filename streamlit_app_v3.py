@@ -179,16 +179,10 @@ else:
             
         if st.button('계획서 목차 만들기(예시)'):
             st.session_state.messages.append({"role": "assistant", "content": "-----------------------------"})
-            st.session_state.messages.append({"role": "assistant", "content": "연구 계획서를 업로드 해주셨군요?"})
-            st.session_state.messages.append({"role": "assistant", "content": "./asset/plan.png"})
+            st.session_state.messages.append({"role": "assistant", "content": "연구 계획서를 목차만들기가 궁굼하시군요"})
+            st.session_state.messages.append({"role": "assistant", "content": "./asset/plan1.png"})
+            st.session_state.messages.append({"role": "assistant", "content": "목차가 없는 문서를 주시면 제가 목차를 만들어 드립니다."})
 
-            st.session_state.messages.append({"role": "user", "content": "연구계획서 개요좀 만들어줘"})
-
-            st.session_state.messages.append({"role": "assistant", "content": "작업중입니다 조금만 기달려주세요 ^^"})
-            st.session_state.messages.append({"role": "assistant", "content": "./asset/plan_ac.png"})
-            st.session_state.messages.append({"role": "assistant", "content": "작업이 완료되었습니다."})
-
-            st.session_state.messages.append({"role": "user", "content": "고마워^^"})
         
         if st.button('계획서 회계자료 연동(예시)'):
             st.session_state.messages.append({"role": "assistant", "content": "연구 계획서를 업로드 해주셨군요?"})
@@ -212,16 +206,10 @@ else:
             else:
                 st.write(message["content"])
 
-
-
     if trigger_introduce:
         openai("에디 너에 대해서 자세히 알고싶어")
         trigger_introduce = False
 
 
-    # if trigger_demo2:
-    #     st.image(message["content"])
-    #     st.image(message["content"])
-        
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
         openai(prompt)
