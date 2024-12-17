@@ -171,13 +171,13 @@ else:
                 st.success('API key provided!', icon='✅')
 
 
-        if st.button('에디 너를 소개해줘!'):
+        if st.button('**"에디"** 너를 소개해줘!'):
             trigger_introduce = not trigger_introduce
   
         # if st.button('연구행정 자동화 데모 [1]'):
         #     st.session_state.messages.append({"role": "assistant", "content": "./asset/ed.png"})
             
-        if st.button('[계획서] 목차 만들기(예시)'):
+        if st.button('[계획서] 목차 생성  (예시)'):
             st.session_state.messages.append({"role": "assistant", "content": "-----------------------------"})
             st.session_state.messages.append({"role": "assistant", "content": "연구 계획서를 목차만들기가 궁굼하시군요"})
             st.session_state.messages.append({"role": "assistant", "content": "./asset/plan1.png"})
