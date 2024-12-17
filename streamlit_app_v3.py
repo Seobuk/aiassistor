@@ -130,7 +130,8 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
-st.session_state.trigger_introduce = False
+st.session_state.trigger_introduce   = False
+st.session_state.trigger_demo2       = False
 # 인증 페이지
 if not st.session_state.authenticated:
 
@@ -172,10 +173,11 @@ else:
         if st.button('에디 너를 소개해줘 [click] '):
             trigger_introduce = not trigger_introduce
   
-        if st.button('연구행정 자동화 데모 1 [click] '):
+        if st.button('연구행정 자동화 데모 [1]'):
             st.session_state.messages.append({"role": "assistant", "content": "./asset/ed.png"})
             
-
+        if st.button('연구행정 자동화 데모 [2]'):
+            trigger_demo2 = not trigger_demo2
 
     if "messages" not in st.session_state.keys():
         st.session_state.messages       = []  # 세션에 메시지 기록 초기화
@@ -198,6 +200,11 @@ else:
     if trigger_introduce:
         openai("에디 너에 대해서 자세히 알고싶어")
         trigger_introduce = False
+
+
+    if trigger_demo2:
+        st.image(message["content"])
+        st.image(message["content"])
         
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
         openai(prompt)
