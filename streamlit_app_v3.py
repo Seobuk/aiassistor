@@ -192,6 +192,11 @@ else:
                 st.image(message["content"])
                 # st.image(message["content"])
                 # st.image(message["content"])
+            
+            elif trigger_demo2 : 
+                st.image(message["content"])
+                st.image(message["content"])
+
             else:
                 st.write(message["content"])
 
@@ -202,9 +207,9 @@ else:
         trigger_introduce = False
 
 
-    if trigger_demo2:
-        st.image(message["content"])
-        st.image(message["content"])
+    # if trigger_demo2:
+    #     st.image(message["content"])
+    #     st.image(message["content"])
         
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
         openai(prompt)
