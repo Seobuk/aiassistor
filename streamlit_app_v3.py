@@ -193,6 +193,9 @@ else:
 
         if st.button('대화 초기화'):
             st.session_state.messages       = []  # 세션에 메시지 기록 초기화
+            st.session_state.messages     = [{"role": "assistant", "content": "안녕하세요 저는 AI행정원'에디'입니다."}]
+            st.session_state.messages.append({"role": "assistant", "content": "궁굼하신게 있으시면 말씀해주세요!!"})  # 역할 이름을 "user"로 변경
+
 
     if "messages" not in st.session_state.keys():
         st.session_state.messages       = []  # 세션에 메시지 기록 초기화
