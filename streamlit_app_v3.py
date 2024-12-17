@@ -191,6 +191,9 @@ else:
             st.session_state.messages.append({"role": "assistant", "content": "연구계획서의 회계파일을 제가 찾아서 엑셀파일로 만들어 드립니다."})
             st.session_state.messages.append({"role": "assistant", "content": "책임자님이 작업을 하시고 나서 말씀해주시면 제가 다시 한글로 내용을 반영해 드려요^^"})
 
+        if st.button('대화 초기화'):
+            st.session_state.messages       = []  # 세션에 메시지 기록 초기화
+
     if "messages" not in st.session_state.keys():
         st.session_state.messages       = []  # 세션에 메시지 기록 초기화
         st.session_state.messages     = [{"role": "assistant", "content": "안녕하세요 저는 AI행정원'에디'입니다."}]
