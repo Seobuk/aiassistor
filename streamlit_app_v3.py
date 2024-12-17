@@ -194,7 +194,7 @@ else:
                 # st.image(message["content"])
                 # st.image(message["content"])
             elif trigger_demo2:
-                st.image(message["content"])
+                st.image("./asset/ed.png")
             else:
                 st.write(message["content"])
 
