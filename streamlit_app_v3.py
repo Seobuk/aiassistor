@@ -66,7 +66,7 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
                 {
                     "role": "system",
                     "content": """
-                    답변은 구조적으로, 친근하게 
+                    답변형식 : 구조적으로, 친근하게 
                     """
                 },
                 {
