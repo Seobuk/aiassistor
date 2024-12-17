@@ -215,7 +215,7 @@ else:
     #     st.write(f"Uploaded file: {uploaded_file.name}")
         
     if trigger_introduce:
-        openai("에디 너에 대해서 자세히 알고싶어 구조적으로 답변해줘")
+        openai("에디 너에 대해서 자세히 알고싶어 구조적으로 친근하게 답변해줘")
         trigger_introduce = False
         
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
