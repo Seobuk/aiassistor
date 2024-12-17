@@ -47,7 +47,7 @@ def openai(prompt):
     openai_prompt(prompt)
     
     with st.chat_message("user"):
-        st.write("에디 너는 누구니?")
+        st.write(prompt)
 
     openai_respond()
 
@@ -171,7 +171,7 @@ else:
                 st.success('API key provided!', icon='✅')
 
 
-        if st.button('에디 너를 소개해줘 [click] '):
+        if st.button('에디 너를 소개해줘!'):
             trigger_introduce = not trigger_introduce
   
         # if st.button('연구행정 자동화 데모 [1]'):
