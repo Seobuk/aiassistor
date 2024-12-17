@@ -177,7 +177,7 @@ else:
         # if st.button('연구행정 자동화 데모 [1]'):
         #     st.session_state.messages.append({"role": "assistant", "content": "./asset/ed.png"})
             
-        if st.button('Demo 1'):
+        if st.button('계획서 목차 만들기(예시)'):
             st.session_state.messages.append({"role": "assistant", "content": "-----------------------------"})
             st.session_state.messages.append({"role": "assistant", "content": "연구 계획서를 업로드 해주셨군요?"})
             st.session_state.messages.append({"role": "assistant", "content": "./asset/plan.png"})
@@ -190,7 +190,7 @@ else:
 
             st.session_state.messages.append({"role": "user", "content": "고마워^^"})
         
-        if st.button('연구계획서 업로드 및 엑셀 연동작업'):
+        if st.button('계획서 회계자료 연동(예시)'):
             st.session_state.messages.append({"role": "assistant", "content": "연구 계획서를 업로드 해주셨군요?"})
             st.session_state.messages.append({"role": "user", "content": "연구계획서 개요좀 만들어줘"})
             st.session_state.messages.append({"role": "assistant", "content": "./asset/ed.png"})
