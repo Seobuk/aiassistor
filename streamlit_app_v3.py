@@ -155,6 +155,7 @@ if not st.session_state.authenticated:
 
 else:
     trigger_introduce = False
+    trigger_demo2 = False
     
     with st.sidebar:
         st.logo(logo,size="large")
