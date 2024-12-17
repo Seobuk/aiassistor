@@ -180,6 +180,8 @@ else:
         if st.button('연구행정 자동화 데모 [2]'):
             st.session_state.messages.append({"role": "assistant", "content": "aaaa"})
             st.session_state.messages.append({"role": "user", "content": "bbbb"})
+            st.session_state.messages.append({"role": "assistant", "content": "./asset/ed.png"})
+            st.session_state.messages.append({"role": "user", "content": "bbbb"})
 
     if "messages" not in st.session_state.keys():
         st.session_state.messages       = []  # 세션에 메시지 기록 초기화
