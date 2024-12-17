@@ -47,7 +47,7 @@ def openai(prompt):
     openai_prompt(prompt)
     
     with st.chat_message("user"):
-        st.write(prompt)
+        st.write("에디 너는 누구니?")
 
     openai_respond()
 
@@ -215,7 +215,7 @@ else:
     #     st.write(f"Uploaded file: {uploaded_file.name}")
         
     if trigger_introduce:
-        openai("에디 너에 대해서 자세히 알고싶어")
+        openai("에디 너에 대해서 자세히 알고싶어 구조적으로 답변해줘")
         trigger_introduce = False
         
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
