@@ -215,7 +215,7 @@ else:
 
 
     if trigger_introduce:
-        openai("에디 너에 대해서 자세히 알고싶어")
+        openai("에디 너에 대해서 자세히 알고싶어 (구조적으로 답변해줘)")
         trigger_introduce = False
 
 
