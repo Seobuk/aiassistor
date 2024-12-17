@@ -66,6 +66,12 @@ async def async_chat_with_openai(placeholder ,messages, model="gpt-4"):
                 {
                     "role": "system",
                     "content": """
+                    답변은 구조적으로, 친근하게 
+                    """
+                },
+                {
+                    "role": "system",
+                    "content": """
                     개발 배경:
                     - 계획서 작성 등 연구 행정 업무의 효율성을 높이기 위해 개발.
                     - 2024 NST 연구행정 혁신 아이디어 공모전 출품이 목적.
@@ -215,7 +221,7 @@ else:
     #     st.write(f"Uploaded file: {uploaded_file.name}")
         
     if trigger_introduce:
-        openai("에디 너에 대해서 자세히 알고싶어 구조적으로 친근하게 답변해줘")
+        openai("에디 너에 대해서 자세히 알고싶어")
         trigger_introduce = False
         
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
