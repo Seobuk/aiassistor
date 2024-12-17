@@ -201,7 +201,7 @@ else:
         st.session_state.messages       = []  # 세션에 메시지 기록 초기화
         st.session_state.messages     = [{"role": "assistant", "content": "안녕하세요 저는 AI행정원'에디'입니다."}]
         st.session_state.messages.append({"role": "assistant", "content": "만나서 반갑습니다."})  # 역할 이름을 "user"로 변경
-
+        st.session_state.messages.append({"role": "assistant", "content": "위에 **">"** 를 클릭하시면 다양한 예시를 보실수 있습니다.."}) 
     # Display or clear chat messages
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
