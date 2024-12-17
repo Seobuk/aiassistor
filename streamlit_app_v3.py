@@ -184,12 +184,12 @@ else:
             st.session_state.messages.append({"role": "assistant", "content": "목차가 없는 문서를 주시면 제가 목차를 만들어 드립니다."})
 
         
-        if st.button('계획서 회계자료 연동(예시)'):
-            st.session_state.messages.append({"role": "assistant", "content": "-----------------------------"})
-            st.session_state.messages.append({"role": "assistant", "content": "연구 계획서를 엑셀 연동이 궁굼하시군요"})
-            st.session_state.messages.append({"role": "assistant", "content": "./asset/plan2.png"})
-            st.session_state.messages.append({"role": "assistant", "content": "연구계획서의 회계파일을 제가 찾아서 엑셀파일로 만들어 드립니다."})
-            st.session_state.messages.append({"role": "assistant", "content": "책임자님이 작업을 하시고 나서 말씀해주시면 제가 다시 한글로 내용을 반영해 드려요^^"})
+        # if st.button('계획서 회계자료 연동(예시)'):
+        #     st.session_state.messages.append({"role": "assistant", "content": "-----------------------------"})
+        #     st.session_state.messages.append({"role": "assistant", "content": "연구 계획서를 엑셀 연동이 궁굼하시군요"})
+        #     st.session_state.messages.append({"role": "assistant", "content": "./asset/plan2.png"})
+        #     st.session_state.messages.append({"role": "assistant", "content": "연구계획서의 회계파일을 제가 찾아서 엑셀파일로 만들어 드립니다."})
+        #     st.session_state.messages.append({"role": "assistant", "content": "책임자님이 작업을 하시고 나서 말씀해주시면 제가 다시 한글로 내용을 반영해 드려요^^"})
 
     if "messages" not in st.session_state.keys():
         st.session_state.messages       = []  # 세션에 메시지 기록 초기화
