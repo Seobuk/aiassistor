@@ -178,6 +178,7 @@ else:
         #     st.session_state.messages.append({"role": "assistant", "content": "./asset/ed.png"})
             
         if st.button('연구계획서 업로드 및 개요작업 요청하기'):
+            st.session_state.messages.append({"role": "assistant", "content": "-----------------------------"})
             st.session_state.messages.append({"role": "assistant", "content": "연구 계획서를 업로드 해주셨군요?"})
             st.session_state.messages.append({"role": "assistant", "content": "./asset/plan"})
 
@@ -186,7 +187,7 @@ else:
             st.session_state.messages.append({"role": "assistant", "content": "작업중입니다 조금만 기달려주세요 ^^"})
             st.session_state.messages.append({"role": "assistant", "content": "./asset/plan_ac.png"})
             st.session_state.messages.append({"role": "assistant", "content": "작업이 완료되었습니다."})
-            
+
             st.session_state.messages.append({"role": "user", "content": "고마워^^"})
         
         if st.button('연구계획서 업로드 및 엑셀 연동작업'):
