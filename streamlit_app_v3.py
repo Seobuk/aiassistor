@@ -168,31 +168,13 @@ else:
                 AsyncOpenAI.api_key = input_key
                 st.success('API key provided!', icon='✅')
 
-        # uploaded_file = st.sidebar.file_uploader(
-        #     label="**연구계획서를 올려주세요**",
-        #     type=["hwp", "hwpx"], 
-        #     accept_multiple_files=False  
-        #     )
+
         if st.button('에디 너를 소개해줘 [click] '):
             trigger_introduce = not trigger_introduce
-            # st.session_state.trigger_introduce = True
-            # st.session_state.messages.append({"role": "assistant", "content": "introduce"})
-            # openai_prompt("에디 너에 대해서 자세히 알고싶어")
-            # st.session_state.messages.append({"role": "user", "content": "에디 너에 대해서 자세히 알고싶어"})
-            # st.chat_message("에디 너에 대해서 자세히 알고 싶어")
-            
-            # # 이미지를 표시
-            # st.session_state.messages.append({
-            #     "role": "assistant",
-            #     "content": "./asset/ed.png"}
-
+  
         if st.button('연구행정 자동화 데모 1 [click] '):
             st.session_state.messages.append({"role": "assistant", "content": "./asset/ed.png"})
             
-            # # 이미지를 표시
-            # st.session_state.messages.append({
-            #     "role": "assistant",
-            #     "content": "./asset/ed.png"}
 
 
     if "messages" not in st.session_state.keys():
@@ -203,36 +185,19 @@ else:
     # Display or clear chat messages
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
-            #st.write(message["content"])
             # 메시지 내용이 이미지 파일 경로인지 확인
             if isinstance(message["content"], str) and message["content"].lower().endswith(('.png', '.jpg', '.jpeg')):
                 st.image(message["content"])
-                st.image(message["content"])
-                st.image(message["content"])
+                # st.image(message["content"])
+                # st.image(message["content"])
             else:
                 st.write(message["content"])
 
 
 
-    # # 업로드된 파일 처리
-    # if uploaded_file:
-    #     st.sidebar.success("File uploaded successfully!")
-    #     # 파일 이름 표시
-    #     st.write(f"Uploaded file: {uploaded_file.name}")
-        
     if trigger_introduce:
         openai("에디 너에 대해서 자세히 알고싶어")
         trigger_introduce = False
         
     if prompt := st.chat_input(disabled=not AsyncOpenAI.api_key):
         openai(prompt)
-        
-        # st.session_state.messages.append({"role": "user", "content": prompt})
-        # with st.chat_message("user"):
-        #     st.write(prompt)
-
-        # # GPT 응답 생성
-        # with st.chat_message("assistant"):
-        #     placeholder = st.empty()
-        #     response_content = asyncio.run(async_chat_with_openai(placeholder, st.session_state.messages))
-        #     st.session_state.messages.append({"role": "assistant", "content": response_content})
