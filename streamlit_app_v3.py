@@ -178,7 +178,8 @@ else:
             st.session_state.messages.append({"role": "assistant", "content": "./asset/ed.png"})
             
         if st.button('연구행정 자동화 데모 [2]'):
-            trigger_demo2 = not trigger_demo2
+            st.session_state.messages.append({"role": "assistant", "content": "aaaa"})
+            st.session_state.messages.append({"role": "user", "content": "bbbb"})
 
     if "messages" not in st.session_state.keys():
         st.session_state.messages       = []  # 세션에 메시지 기록 초기화
@@ -193,8 +194,6 @@ else:
                 st.image(message["content"])
                 # st.image(message["content"])
                 # st.image(message["content"])
-            elif trigger_demo2:
-                st.image("./asset/ed.png")
             else:
                 st.write(message["content"])
 
